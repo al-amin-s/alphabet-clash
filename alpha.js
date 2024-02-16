@@ -9,7 +9,16 @@
 // // console.log(playGroundSection.classList)
 // }
 function handleKeybordKeyUpEvent(event){
-const playerPressed=event.key;
+    const playerPressed = event.key;
+    console.log( 'player pressed', playerPressed)
+
+    // stop the game if pressed 'Esc'
+    if(playerPressed === 'Escape'){
+        gameOver();
+    }
+
+
+
 console.log(playerPressed);
 
 const currentAlphabetElement=document.getElementById('current-alphabet')
@@ -44,7 +53,13 @@ else{
     const newLife=currentLife -1;
 
     currentLifeElenment.innerText=newLife;
+
+    
+if(newLife===0){
+    gameOver('');
+    }
 }
+
 }
 
 document.addEventListener('keyup',handleKeybordKeyUpEvent)
@@ -66,6 +81,22 @@ setBackgroundColorById(alphabet);
 
 function play(){
     hideElementById('home-section');
-    showElementById('play-ground')
+    hideElementById('final-score');
+    showElementById('play-ground');
+
+    setTextElementValueById('current-life',5);
+    setTextElementValueById('current-score',0);
+
     continueGame()
+}
+
+function gameOver(){
+    hideElementById('play-ground');
+    showElementById('final-score');
+    
+    const lastScore=getTextElementValueById('current-score');
+    // console.log(lastScore);
+    setTextElementValueById('last-score',lastScore);
+
+    
 }
