@@ -19,13 +19,31 @@ console.log(playerPressed,expectedAlphabet);
 
 if (playerPressed === expectedAlphabet)
 {
+
     console.log('Great');
+    const currentScoreElement=document.getElementById('current-score');
+    const currentScoreText=currentScoreElement.innerText;
+    const currentScore=parseInt(currentScoreText);
+    console.log(currentScore);
+    
+    const newScore=currentScore+1;
+    // console.log(newScore);
+     currentScoreElement.innerText=newScore;
+
     continueGame();
     removeBackgroundColorById(expectedAlphabet);
     
 }
 else{
     console.log('You missed.')
+
+    const currentLifeElenment=document.getElementById('current-life');
+    const currentLifeText=currentLifeElenment.innerText;
+    const currentLife=parseInt(currentLifeText);
+
+    const newLife=currentLife -1;
+
+    currentLifeElenment.innerText=newLife;
 }
 }
 
