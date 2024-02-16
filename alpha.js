@@ -8,6 +8,31 @@
 //     playGroundSection.classList.remove('hidden')
 // // console.log(playGroundSection.classList)
 // }
+function handleKeybordKeyUpEvent(event){
+const playerPressed=event.key;
+console.log(playerPressed);
+
+const currentAlphabetElement=document.getElementById('current-alphabet')
+const currentAlphabet=currentAlphabetElement.innerText;
+const expectedAlphabet =currentAlphabet.toLowerCase();
+console.log(playerPressed,expectedAlphabet);
+
+if (playerPressed === expectedAlphabet)
+{
+    console.log('Great');
+    continueGame();
+    removeBackgroundColorById(expectedAlphabet);
+    
+}
+else{
+    console.log('You missed.')
+}
+}
+
+document.addEventListener('keyup',handleKeybordKeyUpEvent)
+
+
+
 function continueGame(){
 const alphabet=getARandomAlphabet();
 console.log('your',alphabet);
@@ -16,7 +41,9 @@ console.log('your',alphabet);
 const currentAlphabetElement=document.getElementById('current-alphabet');
 currentAlphabetElement.innerText=alphabet;
 
-setBackgroundColoreById(alphabet);
+setBackgroundColorById(alphabet);
+
+
 }
 
 function play(){
